@@ -1,9 +1,10 @@
 import { Todo } from "../models/Todo";
 import { Project } from "../models/Project";
+//εδώ πρέπει να γίνει και Import το storage.js, renderTodos.js, renderTodoDetails.js, renderProjects.js
 
 export class AppController {
   constructor() {
-    this.todo = []; //εδώ αποθηκεύουμε όλατ τα tasks
+    this.todo = []; //εδώ αποθηκεύουμε όλα τα tasks
   }
 
   createTodo(todoInput) {

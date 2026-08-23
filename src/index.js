@@ -1,13 +1,3 @@
-//Το αντικείμενο todo είναι ένας πίνακας αντικειμένων οπου κρατάει κάθε εργασία μέσα σε αυτό έχει την μορφή
-// [
-//     {
-//         title: "Τίτλος Task",
-//         description: "Περιγραφή Task",
-//         creationDate: "Ημερομηνία δημιουργίας",
-//         expireDate: "Ημερομηνία λήξης",
-//         priority: "Πρωτεραιότητα",
-//         isDone: "True or False εάν έχει ολοκληροθεί"
-//         notes: "Σημειώσεις για την κάθε εργασία"
-//     }
-// ]
 import "./styles/main.css";
+import { AppController } from "./logic/AppController";
+//πρέπει να γίνει import το eventListener.js
