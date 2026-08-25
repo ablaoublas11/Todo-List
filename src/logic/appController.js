@@ -4,15 +4,18 @@ import { Project } from "../models/Project";
 
 export class AppController {
   constructor() {
-    this.todo = []; //εδώ αποθηκεύουμε όλα τα tasks
+    this.project = []; //εδώ αποθηκεύουμε όλα τα project
   }
 
-  createTodo(todoInput) {
-    //εδώ το todoInput είναι αντικείμενο που περιέχει τα εισαγώμενα στοιχεία του χρήστη για το task
-    //1. πρέπει να ελένξουμε εάν είναι άδειο το εντικέιμενο
+  //Δημιουργία ενός task
+  createTodo(todoInput) {}
 
-    //2. δημιουργία αντικειμένο Todo
-    const todo = new Todo(todoInput);
-    //3. κάλεσμα της μεθόδου για αποθήκευση του todo
-  }
+  //Δημιουργία καινούριου project
+  createProject(projectInput) {}
+  //Διαγραφή ενός task
+  deleteTodo(todoId) {}
+  //Επισήμανση σαν ολοκληρομένο για ένα task
+  toogleTodoComplete(todoId) {}
+
+  setActiveProject(projectId) {}
 }
