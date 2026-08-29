@@ -66,14 +66,133 @@
     </header>
     <main class="main-content">
       <section class="left-menu">
-        <div class="new-todo">+ New Task</div>
-        <div class="new-project">+ New Project</div>
+        <div class="new-todo">
+          <button class="new-task" data-action="new-task">+ New Task</button>
+        </div>
+        <div class="new-project">
+          <button class="new-project-btn" data-action="new-project">
+            + New Project
+          </button>
+        </div>
         <div class="filters"></div>
       </section>
       <section class="main-container">
         <div class="todos-container"></div>
         <div class="projects-container"></div>
       </section>
+      <!-- Φόρμα για την εισαγωγή δεδομένων για κάθε Task -->
+      <section class="form-container">
+        <h2>Νέα Εργασία</h2>
+
+        <form id="todo-form" action="#" method="post">
+          <!-- Τίτλος -->
+          <div class="form-group">
+            <label for="title" class="required">Τίτλος</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="π.χ. Ολοκλήρωση αναφοράς"
+              required
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Περιγραφή -->
+          <div class="form-group">
+            <label for="description">Περιγραφή</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Σύντομη περιγραφή της εργασίας..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Σημειώσεις -->
+          <div class="form-group">
+            <label for="notes">Σημειώσεις</label>
+            <textarea
+              id="notes"
+              name="notes"
+              placeholder="Επιπλέον σημειώσεις, links, υπενθυμίσεις..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Ημερομηνία λήξης -->
+          <div class="form-group">
+            <label for="due-date">Ημερομηνία λήξης</label>
+            <input type="date" id="due-date" name="due_date" />
+          </div>
+
+          <!-- Προτεραιότητα -->
+          <div class="form-group">
+            <label for="priority">Προτεραιότητα</label>
+            <select id="priority" name="priority">
+              <option value="low">Χαμηλή</option>
+              <option value="medium" selected>Μεσαία</option>
+              <option value="high">Υψηλή</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit">Αποθήκευση Εργασίας</button>
+        </form>
+      </section>
+      <!-- ---------------------------------------------- -->
+      <!-- Φόρμα για την δημιουργία ενός νέου Project  -->
+
+      <section class="form-project-container">
+        <h1>Νέο Project</h1>
+
+        <form id="project-form" action="#" method="post">
+          <!-- Όνομα Project -->
+          <div class="form-group">
+            <label for="project-name" class="required">Όνομα Project</label>
+            <input
+              type="text"
+              id="project-name"
+              name="name"
+              placeholder="π.χ. Ανακαίνιση Ιστοσελίδας"
+              required
+              autocomplete="off"
+            />
+          </div>
+
+          <!-- Περιγραφή -->
+          <div class="form-group">
+            <label for="project-description">Περιγραφή</label>
+            <textarea
+              id="project-description"
+              name="description"
+              placeholder="Σύντομη περιγραφή του project..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Επιλογή Tasks -->
+          <div class="form-group">
+            <label>Επιλογή Tasks</label>
+            <p
+              style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem"
+            >
+              Επίλεξε τα tasks που θέλεις να ανήκουν σε αυτό το project
+            </p>
+
+            <div class="tasks-list" id="tasks-list">
+              <!-- Τα tasks φορτώνονται εδώ δυναμικά -->
+            </div>
+
+            <div class="selected-count" id="selected-count">
+              Επιλεγμένα: 0 tasks
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">Δημιουργία Project</button>
+        </form>
+      </section>
+
+      <!-- -------------------------------------------- -->
     </main>
   </body>
 </html>

@@ -10,14 +10,16 @@ export class AppController {
   }
 
   //Δημιουργία ενός task
-  createTodo(todoInput) {alert("hello")}
+  createTodo(todoInput) {
+    alert("hello");
+  }
 
   //Δημιουργία καινούριου project
   createProject(projectInput) {}
   //Διαγραφή ενός task
   deleteTodo(todoId) {}
   //Επισήμανση σαν ολοκληρομένο για ένα task
-  toogleTodoComplete(todoId) {}
+  toggleTodoComplete(todoId) {}
 
   setActiveProject(projectId) {}
 }
