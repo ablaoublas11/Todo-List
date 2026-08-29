@@ -5,10 +5,12 @@ import { Project } from "../models/Project";
 export class AppController {
   constructor() {
     this.project = []; //εδώ αποθηκεύουμε όλα τα project
+    this.activeProjectId = null;
+    //Δημιουργία ενός default project εάν δεν υπάρχει κάτι στο storage
   }
 
   //Δημιουργία ενός task
-  createTodo(todoInput) {}
+  createTodo(todoInput) {alert("hello")}
 
   //Δημιουργία καινούριου project
   createProject(projectInput) {}
