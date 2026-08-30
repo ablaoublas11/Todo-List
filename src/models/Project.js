@@ -3,7 +3,7 @@
 export class Project {
   constructor(title, description) {
     this.id = crypto.randomUUID();
-    this.name = this.name;
+    this.name = title;
     this.description = description;
     this.todos = [];
   }

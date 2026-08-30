@@ -4,12 +4,38 @@ export function initEventListeners(appController) {
   taskListContainer.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-action]");
     if (!btn) return;
-    if (btn.dataset.action === "new-task") {
-      document.querySelector(".form-container").classList.toggle("is-open");
-    } else if (btn.dataset.action === "new-project") {
-      document
-        .querySelector(".form-project-container")
-        .classList.toggle("is-open");
+
+    switch (btn.dataset.action) {
+      case "new-task":
+        document.querySelector(".form-container").classList.toggle("is-open");
+        break;
+      case "new-project":
+        document
+          .querySelector(".form-project-container")
+          .classList.toggle("is-open");
+        break;
+      case "btn-submit-project":
+        document
+          .querySelector(".form-project-container")
+          .classList.toggle("is-open");
+        break;
     }
+  });
+
+  const taskForm = document.querySelector("#todo-form");
+  taskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.querySelector(".form-container").classList.toggle("is-open");
+
+    const inputTask = {
+      title: document.querySelector("#title").value,
+      description: document.querySelector("#description").value,
+      notes: document.querySelector("#notes").value,
+      expireDate: document.querySelector("#due-date").value,
+      priority: document.querySelector("#priority").value,
+    };
+
+    appController.createTodo(inputTask);
+    taskForm.reset();
   });
 }
