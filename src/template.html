@@ -205,6 +205,16 @@
       </section>
 
       <!-- -------------------------------------------- -->
+      <!-- Template με βάση του οποίο θα δημιουργούντε όλα τα Task στο UI -->
+      <template>
+        <li class="task-card">
+          <input type="checkbox" class="task-check" data-action="toggle-complete" />
+          <span class="task-name"></span>
+          <button data-action="show-more">Show more...</button>
+          <button data-action="delete-todo">Delete</button>
+        </li>
+      </template>
+      <!-- -------------------------------------------------------------- -->
     </main>
   </body>
 </html>
