@@ -24,7 +24,7 @@ export class AppController {
     );
     activeProjetc.addTodo(todo);
     //κάλεσμα της μεθόδου η οποία θα εμφανίζει την λίστα με τα tasks
-    
+    renderTodo(todo);
   }
 
   //Δημιουργία καινούριου project

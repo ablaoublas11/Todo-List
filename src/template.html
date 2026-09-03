@@ -77,8 +77,8 @@
         <div class="filters"></div>
       </section>
       <section class="main-container">
-        <div class="todos-container"></div>
-        <div class="projects-container"></div>
+        <ul class="todos-container"></ul>
+        <ul class="projects-container"></ul>
       </section>
       <!-- Φόρμα για την εισαγωγή δεδομένων για κάθε Task -->
       <section class="form-container">
@@ -206,7 +206,7 @@
 
       <!-- -------------------------------------------- -->
       <!-- Template με βάση του οποίο θα δημιουργούντε όλα τα Task στο UI -->
-      <template>
+      <template id="task-template">
         <li class="task-card">
           <input type="checkbox" class="task-check" data-action="toggle-complete" />
           <span class="task-name"></span>
