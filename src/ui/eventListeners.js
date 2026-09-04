@@ -19,8 +19,6 @@ export function initEventListeners(appController) {
           .querySelector(".form-project-container")
           .classList.toggle("is-open");
         break;
-      case "show-more":
-        appController.renderTaskDetails(id);
     }
   });
 
@@ -39,5 +37,19 @@ export function initEventListeners(appController) {
 
     appController.createTodo(inputTask);
     taskForm.reset();
+  });
+
+  //εδώ πιάνουμε το event για το show-more και delete button
+  const taskCard = document.querySelector(".todos-container");
+  taskCard.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-action]");
+    if (!btn) return;
+    switch (btn.dataset.action) {
+      case "show-more":
+        const taskId = btn.dataset.id;
+        appController.renderTaskDetails(taskId);
+        document.querySelector(".details-container").classList.toggle("is-open");
+        break;
+    }
   });
 }

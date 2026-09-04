@@ -7,6 +7,7 @@ export function renderTodo(todoList){
         const clone = template.content.cloneNode(true);
         clone.querySelector(".task-check").dataset.id = todo.id;
         clone.querySelector('.task-name').textContent = todo.title;
+        clone.querySelector('[data-action="show-more"]').dataset.id = todo.id;
         clone.querySelector('[data-action="delete-todo"]').dataset.id = todo.id;
         container.append(clone);
     });

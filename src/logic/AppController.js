@@ -30,7 +30,9 @@ export class AppController {
 
   //καλούμε αυτήν την μέθοδο για την εμφάνιση των Details κάθε task 
   renderTaskDetails(id){
-    
+    const project = this.projects.find(p => p.id === this.activeProjectId);
+    const task = project.getTodoById(id);
+    renderTodoDetails(task);
   }
 
   //Δημιουργία καινούριου project
