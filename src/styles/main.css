@@ -3,7 +3,7 @@
    Παλέτα βασισμένη στο λογότυπο: indigo → blue → teal gradient + πορτοκαλί accent
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* --- Χρωματική παλέτα (από το λογότυπο) --- */
@@ -24,17 +24,8 @@
   --accent-teal: #22d3a6;
   --accent-orange: #f7a93b;
 
-  --gradient-brand: linear-gradient(
-    135deg,
-    var(--accent-indigo) 0%,
-    var(--accent-blue) 55%,
-    var(--accent-teal) 100%
-  );
-  --gradient-brand-soft: linear-gradient(
-    135deg,
-    rgba(108, 93, 211, 0.16),
-    rgba(34, 211, 166, 0.16)
-  );
+  --gradient-brand: linear-gradient(135deg, var(--accent-indigo) 0%, var(--accent-blue) 55%, var(--accent-teal) 100%);
+  --gradient-brand-soft: linear-gradient(135deg, rgba(108, 93, 211, 0.16), rgba(34, 211, 166, 0.16));
 
   --success: #22c55e;
   --info: #3b82f6;
@@ -47,7 +38,7 @@
   --shadow-elevated: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
   --shadow-soft: 0 8px 20px -12px rgba(0, 0, 0, 0.5);
 
-  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
 
   --header-height: 72px;
   --sidebar-width: 280px;
@@ -209,9 +200,7 @@ input:focus-visible {
   background: var(--bg-surface-alt);
   border: 1px solid var(--border-subtle);
   border-radius: 50%;
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .toogle-theme-btn:hover {
@@ -288,9 +277,7 @@ input:focus-visible {
   font-size: 14px;
   box-shadow: var(--shadow-soft);
   cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .new-task:hover {
@@ -312,10 +299,7 @@ input:focus-visible {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease,
-    background 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
 .new-project-btn:hover {
@@ -340,9 +324,7 @@ input:focus-visible {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .filters > *:hover {
@@ -378,6 +360,73 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px;
+}
+
+/* --- Task card (από το #task-template, μπαίνει μέσα στο .todos-container) --- */
+
+.task-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.task-card:hover {
+  border-color: var(--border-strong);
+}
+
+.task-check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent-teal);
+  cursor: pointer;
+}
+
+.task-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ολοκληρωμένο task: γίνεται μόλις το checkbox μπει σε :checked */
+.task-card:has(.task-check:checked) {
+  border-color: transparent;
+  background: var(--bg-surface-alt);
+}
+
+.task-card:has(.task-check:checked) .task-name {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.task-card button {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.task-card button:hover {
+  background: var(--bg-surface-alt);
+  color: var(--text-primary);
+}
+
+.task-card button[data-action='delete-todo']:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
 }
 
 /* ==========================================================================
@@ -427,13 +476,15 @@ input:focus-visible {
 }
 
 /* ==========================================================================
-   Modal φόρμας: Νέα Εργασία (.form-container)
+   Modal φόρμας: Νέα Εργασία / Νέο Project / Λεπτομέρειες Task
+   (.form-container / .form-project-container / .detail-card)
    Κρυφό by default — εμφανίζεται όταν προστεθεί η κλάση .is-open μέσω JS
-   (π.χ. στο click handler του .new-todo button)
+   (π.χ. στο click handler του .new-task / .new-project-btn / [data-action="show-more"])
    ========================================================================== */
 
 .form-container,
-.form-project-container {
+.form-project-container,
+.detail-card {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -447,20 +498,16 @@ input:focus-visible {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   /* Το δεύτερο box-shadow (spread 9999px) λειτουργεί ως backdrop, χωρίς να χρειάζεται ξεχωριστό div */
-  box-shadow:
-    var(--shadow-elevated),
-    0 0 0 9999px rgba(5, 8, 20, 0.72);
+  box-shadow: var(--shadow-elevated), 0 0 0 9999px rgba(5, 8, 20, 0.72);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    visibility 0.25s;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
 }
 
 .form-container.is-open,
-.form-project-container.is-open {
+.form-project-container.is-open,
+.detail-card.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -468,10 +515,14 @@ input:focus-visible {
 }
 
 .form-container h1,
-.form-container h2 {
+.form-container h2,
+.form-project-container h1,
+.form-project-container h2,
+.detail-card h2 {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 24px;
+
 }
 
 #todo-form,
@@ -494,7 +545,7 @@ input:focus-visible {
 }
 
 .form-group label.required::after {
-  content: " *";
+  content: ' *';
   color: var(--accent-orange);
 }
 
@@ -516,7 +567,7 @@ input:focus-visible {
 }
 
 .tasks-list:empty::before {
-  content: "Δεν υπάρχουν διαθέσιμα tasks για επιλογή.";
+  content: 'Δεν υπάρχουν διαθέσιμα tasks για επιλογή.';
   font-size: 13px;
   color: var(--text-muted);
 }
@@ -568,7 +619,7 @@ input:focus-visible {
   cursor: pointer;
 }
 
-.form-group input[type="date"] {
+.form-group input[type='date'] {
   color-scheme: dark;
 }
 
@@ -581,9 +632,7 @@ input:focus-visible {
   font-weight: 700;
   font-size: 14px;
   box-shadow: var(--shadow-soft);
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-submit:hover {
@@ -592,7 +641,79 @@ input:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .form-container {
+  .form-container,
+  .form-project-container,
+  .detail-card {
     padding: 24px 20px;
   }
+}
+
+/* ==========================================================================
+   Λεπτομέρειες Task (από το #task-details, μπαίνει μέσα στο .main-container)
+   ========================================================================== */
+
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.detail-task-name {
+  margin-bottom: 4px;
+}
+
+/* Οι .description/.notes/.creation-date/.expire-date/.priority γεμίζουν
+   μόνο με την τιμή μέσω JS — η ετικέτα (label) προστίθεται εδώ με ::before,
+   ώστε να μη χρειάζεται ξεχωριστό <label> στο template */
+.detail-card > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.detail-card > span::before {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.detail-card .description::before {
+  content: 'Περιγραφή';
+}
+
+.detail-card .notes::before {
+  content: 'Σημειώσεις';
+}
+
+.detail-card .creation-date::before {
+  content: 'Δημιουργήθηκε';
+}
+
+.detail-card .expire-date::before {
+  content: 'Λήγει';
+}
+
+.detail-card .priority::before {
+  content: 'Προτεραιότητα';
+}
+
+.detail-card button[data-action='delete-todo'] {
+  margin-top: 8px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: var(--danger);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.detail-card button[data-action='delete-todo']:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: var(--danger);
 }

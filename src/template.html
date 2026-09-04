@@ -215,6 +215,20 @@
         </li>
       </template>
       <!-- -------------------------------------------------------------- -->
+       <!-- Template με βάση του οποίο θα εμφανίζονται οι λεπτομέρειες του κάθε task στο UI με βάση το id. 
+        Θα εισάγται στο <section class="main-container"> πάνω από όλα. Όπως και με τις φόρμες συμπλήρωσης στοιχείων-->
+      <template id="task-details">
+        <div class="detail-card">
+          <h2 class="detail-task-name"></span>
+          <span class="description"></span>
+          <span class="notes"></span>
+          <span class="creation-date"></span>
+          <span class="expire-date"></span>
+          <span class="priority"></span>
+          <button data-action="delete-todo">Delete</button>
+        </div>
+      </template>
+      <!-- -------------------------------------------------------------- -->
     </main>
   </body>
 </html>

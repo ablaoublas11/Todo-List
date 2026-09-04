@@ -19,6 +19,8 @@ export function initEventListeners(appController) {
           .querySelector(".form-project-container")
           .classList.toggle("is-open");
         break;
+      case "show-more":
+        appController.renderTaskDetails(id);
     }
   });
 

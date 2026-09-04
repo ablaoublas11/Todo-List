@@ -3,13 +3,13 @@ export function renderTodo(todoList){
     container.innerHTML = "";
     const template = document.querySelector("#task-template");
 
-    
-    const clone = template.content.cloneNode(true);
-    clone.querySelector(".task-check").dataset.id = todoList.id;
-    clone.querySelector('.task-name').textContent = todoList.title;
-    clone.querySelector('[data-action="delete-todo"]').dataset.id = todoList.id;
-    container.append(clone);
-
+    todoList.forEach( todo => {
+        const clone = template.content.cloneNode(true);
+        clone.querySelector(".task-check").dataset.id = todo.id;
+        clone.querySelector('.task-name').textContent = todo.title;
+        clone.querySelector('[data-action="delete-todo"]').dataset.id = todo.id;
+        container.append(clone);
+    });
 }
 
 //πρέπει στον appContreller να στέλνω ολόκληρη την λίστα με τα todos ώστε αυτο να κάνει re-render
