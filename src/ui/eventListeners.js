@@ -44,11 +44,42 @@ export function initEventListeners(appController) {
   taskCard.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-action]");
     if (!btn) return;
+    const taskId = btn.dataset.id;
     switch (btn.dataset.action) {
       case "show-more":
-        const taskId = btn.dataset.id;
         appController.renderTaskDetails(taskId);
-        document.querySelector(".details-container").classList.toggle("is-open");
+        document
+          .querySelector(".details-container")
+          .classList.toggle("is-open");
+        break;
+      case "delete-todo":
+        appController.deleteTodo(taskId);
+        break;
+    }
+  });
+
+  //εδώ πιάνουμε το event για το close, edit και delete button στο details-container
+  const detailCard = document.querySelector(".details-container");
+  detailCard.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-action]");
+    if (!btn) return;
+    switch (btn.dataset.action) {
+      case "close-todo":
+        document
+          .querySelector(".details-container")
+          .classList.toggle("is-open");
+        break;
+      case "edit-todo":
+        document
+          .querySelector(".details-container")
+          .classList.toggle("is-open");
+        break;
+      case "delete-todo":
+        const taskId = btn.dataset.id;
+        appController.deleteTodo(taskId);
+        document
+          .querySelector(".details-container")
+          .classList.toggle("is-open");
         break;
     }
   });

@@ -209,14 +209,18 @@
       <!-- Template με βάση του οποίο θα δημιουργούντε όλα τα Task στο UI -->
       <template id="task-template">
         <li class="task-card">
-          <input type="checkbox" class="task-check" data-action="toggle-complete" />
+          <input
+            type="checkbox"
+            class="task-check"
+            data-action="toggle-complete"
+          />
           <span class="task-name"></span>
           <button data-action="show-more">Show more...</button>
           <button data-action="delete-todo">Delete</button>
         </li>
       </template>
       <!-- -------------------------------------------------------------- -->
-       <!-- Template με βάση του οποίο θα εμφανίζονται οι λεπτομέρειες του κάθε task στο UI με βάση το id. 
+      <!-- Template με βάση του οποίο θα εμφανίζονται οι λεπτομέρειες του κάθε task στο UI με βάση το id. 
         Θα εισάγται στο <section class="main-container"> πάνω από όλα. Όπως και με τις φόρμες συμπλήρωσης στοιχείων-->
       <template id="task-details">
         <div class="detail-card">
@@ -226,6 +230,8 @@
           <span class="creation-date"></span>
           <span class="expire-date"></span>
           <span class="priority"></span>
+          <button data-action="close-todo">Close</button>
+          <button data-action="edit-todo">Edit</button>
           <button data-action="delete-todo">Delete</button>
         </div>
       </template>

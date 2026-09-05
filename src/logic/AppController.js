@@ -2,7 +2,7 @@ import { Todo } from "../models/Todo";
 import { Project } from "../models/Project";
 import { saveTodosToStorage } from "../storage/storage";
 import { renderTodo } from "../ui/renderTodos";
-import { renderTodoDetails } from "../ui/renderTodoDetails"
+import { renderTodoDetails } from "../ui/renderTodoDetails";
 //εδώ πρέπει να γίνει και Import το storage.js, renderTodos.js, renderTodoDetails.js, renderProjects.js
 
 export class AppController {
@@ -28,9 +28,9 @@ export class AppController {
     renderTodo(activeProjetc.todos);
   }
 
-  //καλούμε αυτήν την μέθοδο για την εμφάνιση των Details κάθε task 
-  renderTaskDetails(id){
-    const project = this.projects.find(p => p.id === this.activeProjectId);
+  //καλούμε αυτήν την μέθοδο για την εμφάνιση των Details κάθε task
+  renderTaskDetails(id) {
+    const project = this.projects.find((p) => p.id === this.activeProjectId);
     const task = project.getTodoById(id);
     renderTodoDetails(task);
   }
@@ -38,7 +38,13 @@ export class AppController {
   //Δημιουργία καινούριου project
   createProject(projectInput) {}
   //Διαγραφή ενός task
-  deleteTodo(todoId) {}
+  deleteTodo(taskId) {
+    const activeProjetc = this.projects.find(
+      (proj) => proj.id === this.activeProjectId,
+    );
+    activeProjetc.removeTodo(taskId);
+    renderTodo(activeProjetc.todos);
+  }
   //Επισήμανση σαν ολοκληρομένο για ένα task
   toggleTodoComplete(todoId) {}
 
