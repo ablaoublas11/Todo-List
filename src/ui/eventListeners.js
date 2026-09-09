@@ -22,6 +22,7 @@ export function initEventListeners(appController) {
     }
   });
 
+  //εδώ πιάνει το κλικ που γινεται για την αποθήκευση του task στην φόρμα που ανοίγει για την συμπλήρωση των στοιχείων
   const taskForm = document.querySelector("#todo-form");
   taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -37,6 +38,24 @@ export function initEventListeners(appController) {
 
     appController.createTodo(inputTask);
     taskForm.reset();
+  });
+
+  //εδώ πιάνουμε το κλικ που γινεται για την αποθήκευση ενός νέου Project στην φόρμα που ανοίγει για την συμπλήρωση των στοιχείων
+  const projectForm = document.querySelector("#project-form");
+  projectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    document
+          .querySelector(".form-project-container")
+          .classList.toggle("is-open");
+
+    const inputProject = {
+      name: document.querySelector("#project-name").value,
+      description: document.querySelector("#project-description").value,
+    };
+
+    //καλούμε εδώ την μέθοδο για την δημιουργία του καινούριου Project
+    appController.createProject(inputProject);
+    projectForm.reset();
   });
 
   //εδώ πιάνουμε το event για το show-more και delete button
