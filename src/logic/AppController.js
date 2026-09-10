@@ -33,6 +33,7 @@ export class AppController {
   createProject(projectInput) {
     const project = new Project(projectInput);
     this.setActiveProject(project.id);
+    this.projects.push(project);
     renderProjects(this.projects);
   }
 
@@ -42,9 +43,6 @@ export class AppController {
     const task = project.getTodoById(id);
     renderTodoDetails(task);
   }
-
-  
-
 
   //Διαγραφή ενός task
   deleteTodo(taskId) {

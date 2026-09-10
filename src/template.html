@@ -74,7 +74,11 @@
             + New Project
           </button>
         </div>
-        <div class="filters"></div>
+        <div class="filters">
+          <ul class="projects-nav" id="projects-nav">
+            <!-- Τα projects φορτώνονται εδώ δυναμικά -->
+          </ul>
+        </div>
       </section>
       <section class="main-container">
         <ul class="todos-container"></ul>
@@ -236,6 +240,13 @@
         </div>
       </template>
       <!-- -------------------------------------------------------------- -->
+      <!-- Template με βάση του οποίου θα εμφανίζονται τα projects στην αριστερή στήλη στα φίλτρα.
+       Όταν θα κάνει κλικ ο χρήστης σε κάποιο project τότε θα φιλτράρει τα tasks με βάση το id του project -->
+       <template id="project-filters">
+        <li class="project-nav-item" data-action="filter-project">
+          <span class="project-name"></span>
+        </li>
+       </template>
     </main>
   </body>
 </html>
