@@ -44,10 +44,7 @@ export function initEventListeners(appController) {
   const projectForm = document.querySelector("#project-form");
   projectForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    document
-          .querySelector(".form-project-container")
-          .classList.toggle("is-open");
-
+    document.querySelector(".form-project-container").classList.remove("is-open");
     const inputProject = {
       name: document.querySelector("#project-name").value,
       description: document.querySelector("#project-description").value,
@@ -102,4 +99,15 @@ export function initEventListeners(appController) {
         break;
     }
   });
+
+  //εδώ θα πιάσουμε το κλικ που γινεται στα φίλτρα ώστε ανάλογα με την επιλογή να μας εμφανίσει και τα σωστά task
+  const projectNav = document.querySelector("#projects-nav");
+  projectNav.addEventListener("click", (e) => {
+    
+  });
 }
+
+
+
+//σημείωση για αργότερα να κάνω μια μέθοδο που θα αλλάζει την κατάσταση και θα προσθέτει και θα αφαιρει μια κλάση 
+//από τα html στοιχεια 

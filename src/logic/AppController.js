@@ -4,7 +4,7 @@ import { saveTodosToStorage } from "../storage/storage";
 import { renderTodo } from "../ui/renderTodos";
 import { renderTodoDetails } from "../ui/renderTodoDetails";
 import { renderProjects } from "../ui/renderProjects";
-//εδώ πρέπει να γίνει και Import το storage.js, renderTodos.js, renderTodoDetails.js, renderProjects.js
+//εδώ πρέπει να γίνει και Import το storage.js
 
 export class AppController {
   constructor() {
@@ -30,8 +30,8 @@ export class AppController {
   }
 
   //Δημιουργία καινούριου project
-  createProject(projectInput) {
-    const project = new Project(projectInput);
+  createProject({name, description}) {
+    const project = new Project(name, description);
     this.setActiveProject(project.id);
     this.projects.push(project);
     renderProjects(this.projects);
