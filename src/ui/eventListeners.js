@@ -14,11 +14,6 @@ export function initEventListeners(appController) {
           .querySelector(".form-project-container")
           .classList.toggle("is-open");
         break;
-      case "btn-submit-project":
-        document
-          .querySelector(".form-project-container")
-          .classList.toggle("is-open");
-        break;
     }
   });
 
@@ -44,7 +39,7 @@ export function initEventListeners(appController) {
   const projectForm = document.querySelector("#project-form");
   projectForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    document.querySelector(".form-project-container").classList.remove("is-open");
+    document.querySelector(".form-project-container").classList.toggle("is-open");
     const inputProject = {
       name: document.querySelector("#project-name").value,
       description: document.querySelector("#project-description").value,
@@ -103,7 +98,11 @@ export function initEventListeners(appController) {
   //εδώ θα πιάσουμε το κλικ που γινεται στα φίλτρα ώστε ανάλογα με την επιλογή να μας εμφανίσει και τα σωστά task
   const projectNav = document.querySelector("#projects-nav");
   projectNav.addEventListener("click", (e) => {
-    
+    const liElement = e.target.closest("li");
+    if(!liElement) return;
+
+    const projectId = liElement.dataset.id;
+    appController.renderTasksById(projectId);
   });
 }
 

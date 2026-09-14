@@ -25,6 +25,8 @@ export class AppController {
       (proj) => proj.id === this.activeProjectId,
     );
     activeProjetc.addTodo(todo);
+    //καλέι την μέθοδο που ειναι υπέυθυνη για την εμφάνιση των φίλτρων - projects
+    renderProjects(this.projects);
     //κάλεσμα της μεθόδου η οποία θα εμφανίζει την λίστα με τα tasks
     renderTodo(activeProjetc.todos);
   }
@@ -57,5 +59,13 @@ export class AppController {
 
   setActiveProject(projectId) {
     this.activeProjectId = projectId;
+  }
+
+  renderTasksById(projectId){
+    const activeProjetc = this.projects.find(
+      (proj) => proj.id === projectId,
+    );
+    //καλοούμε την μέθοδο για την εμφάνιση των tasks
+    renderTodo(activeProjetc.todos);
   }
 }
