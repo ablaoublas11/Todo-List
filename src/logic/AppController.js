@@ -17,6 +17,8 @@ export class AppController {
     const defaultProject = new Project("Γενικά", "Γενική κατηγορία Tasks");
     this.projects.push(defaultProject);
     this.activeProjectId = defaultProject.id;
+    //καλέι την μέθοδο που ειναι υπέυθυνη για την εμφάνιση των φίλτρων - projects
+    renderProjects(this.projects);
   }
   //Δημιουργία ενός task
   createTodo(todoInput) {
@@ -25,8 +27,6 @@ export class AppController {
       (proj) => proj.id === this.activeProjectId,
     );
     activeProjetc.addTodo(todo);
-    //καλέι την μέθοδο που ειναι υπέυθυνη για την εμφάνιση των φίλτρων - projects
-    renderProjects(this.projects);
     //κάλεσμα της μεθόδου η οποία θα εμφανίζει την λίστα με τα tasks
     renderTodo(activeProjetc.todos);
   }
@@ -62,6 +62,8 @@ export class AppController {
   }
 
   renderTasksById(projectId){
+    //θέτουμε σαν ενεργό project το project που έχουμε επιλέξει από τα φίλτρα
+    this.setActiveProject(projectId);
     const activeProjetc = this.projects.find(
       (proj) => proj.id === projectId,
     );
