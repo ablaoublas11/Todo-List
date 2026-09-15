@@ -1,5 +1,4 @@
 export function renderTodoDetails(task) {
-  console.log(task);
   const container = document.querySelector(".details-container");
   container.innerHTML = "";
   const template = document.querySelector("#task-details");
