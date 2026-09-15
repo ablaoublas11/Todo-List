@@ -14,6 +14,6 @@ export function renderTodoDetails(task) {
   clone.querySelector(".priority").textContent = task.priority;
   clone.querySelector('[data-action="delete-todo"]').dataset.id = task.id;
   clone.querySelector('[data-action="close-todo"]').dataset.id = task.id;
-  clone.querySelector('[data-action="edit-todo"]').dataset.id = task.id;
+  //clone.querySelector('[data-action="edit-todo"]').dataset.id = task.id;
   container.append(clone);
 }

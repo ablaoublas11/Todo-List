@@ -3,7 +3,7 @@
    Παλέτα βασισμένη στο λογότυπο: indigo → blue → teal gradient + πορτοκαλί accent
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
   /* --- Χρωματική παλέτα (από το λογότυπο) --- */
@@ -24,12 +24,22 @@
   --accent-teal: #22d3a6;
   --accent-orange: #f7a93b;
 
-  --gradient-brand: linear-gradient(135deg, var(--accent-indigo) 0%, var(--accent-blue) 55%, var(--accent-teal) 100%);
-  --gradient-brand-soft: linear-gradient(135deg, rgba(108, 93, 211, 0.16), rgba(34, 211, 166, 0.16));
+  --gradient-brand: linear-gradient(
+    135deg,
+    var(--accent-indigo) 0%,
+    var(--accent-blue) 55%,
+    var(--accent-teal) 100%
+  );
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    rgba(108, 93, 211, 0.16),
+    rgba(34, 211, 166, 0.16)
+  );
 
   --success: #22c55e;
   --info: #3b82f6;
   --danger: #ef4444;
+  --general: #f1f1f1;
 
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -38,7 +48,7 @@
   --shadow-elevated: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
   --shadow-soft: 0 8px 20px -12px rgba(0, 0, 0, 0.5);
 
-  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
 
   --header-height: 72px;
   --sidebar-width: 280px;
@@ -200,7 +210,9 @@ input:focus-visible {
   background: var(--bg-surface-alt);
   border: 1px solid var(--border-subtle);
   border-radius: 50%;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .toogle-theme-btn:hover {
@@ -277,7 +289,9 @@ input:focus-visible {
   font-size: 14px;
   box-shadow: var(--shadow-soft);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .new-task:hover {
@@ -299,7 +313,10 @@ input:focus-visible {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
 .new-project-btn:hover {
@@ -324,7 +341,9 @@ input:focus-visible {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .filters > *:hover {
@@ -358,7 +377,9 @@ input:focus-visible {
   font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .project-nav-item:hover {
@@ -440,7 +461,9 @@ input:focus-visible {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .task-card:hover {
@@ -484,7 +507,9 @@ input:focus-visible {
   padding: 6px 10px;
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .task-card button:hover {
@@ -492,7 +517,7 @@ input:focus-visible {
   color: var(--text-primary);
 }
 
-.task-card button[data-action='delete-todo']:hover {
+.task-card button[data-action="delete-todo"]:hover {
   background: rgba(239, 68, 68, 0.12);
   color: var(--danger);
 }
@@ -564,11 +589,16 @@ input:focus-visible {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   /* Το δεύτερο box-shadow (spread 9999px) λειτουργεί ως backdrop, χωρίς να χρειάζεται ξεχωριστό div */
-  box-shadow: var(--shadow-elevated), 0 0 0 9999px rgba(5, 8, 20, 0.72);
+  box-shadow:
+    var(--shadow-elevated),
+    0 0 0 9999px rgba(5, 8, 20, 0.72);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s;
 }
 
 .form-container.is-open,
@@ -587,7 +617,6 @@ input:focus-visible {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 24px;
-
 }
 
 #todo-form,
@@ -610,7 +639,7 @@ input:focus-visible {
 }
 
 .form-group label.required::after {
-  content: ' *';
+  content: " *";
   color: var(--accent-orange);
 }
 
@@ -632,7 +661,7 @@ input:focus-visible {
 }
 
 .tasks-list:empty::before {
-  content: 'Δεν υπάρχουν διαθέσιμα tasks για επιλογή.';
+  content: "Δεν υπάρχουν διαθέσιμα tasks για επιλογή.";
   font-size: 13px;
   color: var(--text-muted);
 }
@@ -684,7 +713,7 @@ input:focus-visible {
   cursor: pointer;
 }
 
-.form-group input[type='date'] {
+.form-group input[type="date"] {
   color-scheme: dark;
 }
 
@@ -697,7 +726,9 @@ input:focus-visible {
   font-weight: 700;
   font-size: 14px;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .btn-submit:hover {
@@ -732,7 +763,9 @@ input:focus-visible {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 }
 
 .details-container.is-open {
@@ -786,26 +819,26 @@ input:focus-visible {
 }
 
 .detail-card .description::before {
-  content: 'Περιγραφή';
+  content: "Περιγραφή";
 }
 
 .detail-card .notes::before {
-  content: 'Σημειώσεις';
+  content: "Σημειώσεις";
 }
 
 .detail-card .creation-date::before {
-  content: 'Δημιουργήθηκε';
+  content: "Δημιουργήθηκε";
 }
 
 .detail-card .expire-date::before {
-  content: 'Λήγει';
+  content: "Λήγει";
 }
 
 .detail-card .priority::before {
-  content: 'Προτεραιότητα';
+  content: "Προτεραιότητα";
 }
 
-.detail-card button[data-action='delete-todo'] {
+.detail-card button[data-action="delete-todo"] {
   margin-top: 8px;
   height: 42px;
   border-radius: var(--radius-md);
@@ -813,12 +846,32 @@ input:focus-visible {
   color: var(--danger);
   font-weight: 600;
   font-size: 14px;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.detail-card button[data-action='delete-todo']:hover {
+.detail-card button[data-action="delete-todo"]:hover {
   background: rgba(239, 68, 68, 0.12);
   border-color: var(--danger);
+}
+
+.detail-card button[data-action="close-todo"] {
+  margin-top: 8px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(239, 222, 68, 0.35);
+  color: var(--general);
+  font-weight: 600;
+  font-size: 14px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.detail-card button[data-action="close-todo"]:hover {
+  background: rgba(239, 222, 68, 0.12);
+  border-color: var(--general);
 }
 
 @media (max-width: 640px) {

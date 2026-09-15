@@ -1,4 +1,9 @@
 export function initEventListeners(appController) {
+  //ορίζω τα επαναχρησιμοποιούμενα elements
+  const formContainer = document.querySelector(".form-container");
+  const projectContainer = document.querySelector(".form-project-container");
+  const detailsContainer = document.querySelector(".details-container");
+  //---------------------------------------
   const taskListContainer = document.querySelector(".main-content");
 
   taskListContainer.addEventListener("click", (e) => {
@@ -7,12 +12,10 @@ export function initEventListeners(appController) {
 
     switch (btn.dataset.action) {
       case "new-task":
-        document.querySelector(".form-container").classList.toggle("is-open");
+        toogleVisibility(formContainer);
         break;
       case "new-project":
-        document
-          .querySelector(".form-project-container")
-          .classList.toggle("is-open");
+        toogleVisibility(projectContainer);
         break;
     }
   });
@@ -21,7 +24,7 @@ export function initEventListeners(appController) {
   const taskForm = document.querySelector("#todo-form");
   taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    document.querySelector(".form-container").classList.toggle("is-open");
+    toogleVisibility(formContainer);
 
     const inputTask = {
       title: document.querySelector("#title").value,
@@ -39,7 +42,7 @@ export function initEventListeners(appController) {
   const projectForm = document.querySelector("#project-form");
   projectForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    document.querySelector(".form-project-container").classList.toggle("is-open");
+    toogleVisibility(projectContainer);
     const inputProject = {
       name: document.querySelector("#project-name").value,
       description: document.querySelector("#project-description").value,
@@ -59,9 +62,7 @@ export function initEventListeners(appController) {
     switch (btn.dataset.action) {
       case "show-more":
         appController.renderTaskDetails(taskId);
-        document
-          .querySelector(".details-container")
-          .classList.toggle("is-open");
+        toogleVisibility(detailsContainer);
         break;
       case "delete-todo":
         appController.deleteTodo(taskId);
@@ -76,21 +77,15 @@ export function initEventListeners(appController) {
     if (!btn) return;
     switch (btn.dataset.action) {
       case "close-todo":
-        document
-          .querySelector(".details-container")
-          .classList.toggle("is-open");
+        toogleVisibility(detailsContainer);
         break;
-      case "edit-todo":
-        document
-          .querySelector(".details-container")
-          .classList.toggle("is-open");
-        break;
+      // case "edit-todo":
+      //   toogleVisibility(detailsContainer);
+      //   break;
       case "delete-todo":
         const taskId = btn.dataset.id;
         appController.deleteTodo(taskId);
-        document
-          .querySelector(".details-container")
-          .classList.toggle("is-open");
+        toogleVisibility(detailsContainer);
         break;
     }
   });
@@ -99,14 +94,15 @@ export function initEventListeners(appController) {
   const projectNav = document.querySelector("#projects-nav");
   projectNav.addEventListener("click", (e) => {
     const liElement = e.target.closest("li");
-    if(!liElement) return;
+    if (!liElement) return;
 
     const projectId = liElement.dataset.id;
     appController.renderTasksById(projectId);
   });
 }
 
-
-
-//σημείωση για αργότερα να κάνω μια μέθοδο που θα αλλάζει την κατάσταση και θα προσθέτει και θα αφαιρει μια κλάση 
-//από τα html στοιχεια 
+//σημείωση για αργότερα να κάνω μια μέθοδο που θα αλλάζει την κατάσταση και θα προσθέτει και θα αφαιρει μια κλάση
+//από τα html στοιχεια
+function toogleVisibility(element) {
+  element.classList.toggle("is-open");
+}
