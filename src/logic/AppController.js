@@ -23,16 +23,14 @@ export class AppController {
   //Δημιουργία ενός task
   createTodo(todoInput) {
     const todo = new Todo(todoInput);
-    const activeProjetc = this.projects.find(
-      (proj) => proj.id === this.activeProjectId,
-    );
-    activeProjetc.addTodo(todo);
+    const activeProject = this.getActiveProject(this.activeProjectId);
+    activeProject.addTodo(todo);
     //κάλεσμα της μεθόδου η οποία θα εμφανίζει την λίστα με τα tasks
-    renderTodo(activeProjetc.todos);
+    renderTodo(activeProject.todos);
   }
 
   //Δημιουργία καινούριου project
-  createProject({name, description}) {
+  createProject({ name, description }) {
     const project = new Project(name, description);
     this.setActiveProject(project.id);
     this.projects.push(project);
@@ -41,33 +39,39 @@ export class AppController {
 
   //καλούμε αυτήν την μέθοδο για την εμφάνιση των Details κάθε task
   renderTaskDetails(id) {
-    const project = this.projects.find((p) => p.id === this.activeProjectId);
-    const task = project.getTodoById(id);
+    const activeProject = this.getActiveProject(this.activeProjectId);
+    const task = activeProject.getTodoById(id);
     renderTodoDetails(task);
   }
 
   //Διαγραφή ενός task
   deleteTodo(taskId) {
-    const activeProjetc = this.projects.find(
-      (proj) => proj.id === this.activeProjectId,
-    );
-    activeProjetc.removeTodo(taskId);
-    renderTodo(activeProjetc.todos);
+    const activeProject = this.getActiveProject(this.activeProjectId);
+    activeProject.removeTodo(taskId);
+    renderTodo(activeProject.todos);
   }
   //Επισήμανση σαν ολοκληρομένο για ένα task
-  toggleTodoComplete(todoId) {}
+  toggleTodoComplete(todoId) {
+    const activeProject = this.getActiveProject(this.activeProjectId);
+    const activeTask = activeProject.getTodoById(todoId);
+
+    activeTask.toogleIsDone();
+    renderTodo(activeProject.todos);
+  }
 
   setActiveProject(projectId) {
     this.activeProjectId = projectId;
   }
 
-  renderTasksById(projectId){
+  getActiveProject(id) {
+    return this.projects.find((proj) => proj.id === id);
+  }
+
+  renderTasksById(projectId) {
     //θέτουμε σαν ενεργό project το project που έχουμε επιλέξει από τα φίλτρα
     this.setActiveProject(projectId);
-    const activeProjetc = this.projects.find(
-      (proj) => proj.id === projectId,
-    );
+    const activeProject = this.getActiveProject(this.activeProjectId);
     //καλοούμε την μέθοδο για την εμφάνιση των tasks
-    renderTodo(activeProjetc.todos);
+    renderTodo(activeProject.todos);
   }
 }

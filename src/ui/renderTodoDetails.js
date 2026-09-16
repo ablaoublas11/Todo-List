@@ -11,6 +11,9 @@ export function renderTodoDetails(task) {
   clone.querySelector(".creation-date").textContent = task.creationDate;
   clone.querySelector(".expire-date").textContent = task.expireDate;
   clone.querySelector(".priority").textContent = task.priority;
+  clone.querySelector(".completedTask").textContent = task.isDone
+    ? "Completed"
+    : "Not Completed";
   clone.querySelector('[data-action="delete-todo"]').dataset.id = task.id;
   clone.querySelector('[data-action="close-todo"]').dataset.id = task.id;
   //clone.querySelector('[data-action="edit-todo"]').dataset.id = task.id;

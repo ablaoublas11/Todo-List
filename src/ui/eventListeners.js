@@ -56,16 +56,19 @@ export function initEventListeners(appController) {
   //εδώ πιάνουμε το event για το show-more και delete button
   const taskCard = document.querySelector(".todos-container");
   taskCard.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-action]");
-    if (!btn) return;
-    const taskId = btn.dataset.id;
-    switch (btn.dataset.action) {
+    const taskItem = e.target.closest("[data-action]");
+    if (!taskItem) return;
+    const taskId = taskItem.dataset.id;
+    switch (taskItem.dataset.action) {
       case "show-more":
         appController.renderTaskDetails(taskId);
         toogleVisibility(detailsContainer);
         break;
       case "delete-todo":
         appController.deleteTodo(taskId);
+        break;
+      case "toggle-complete":
+        appController.toggleTodoComplete(taskId);
         break;
     }
   });
